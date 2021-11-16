@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/marktwaage/marktwaage.iml" filepath="$PROJECT_DIR$/marktwaage/marktwaage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/schiebeparkplatz/schiebeparkplatz.iml" filepath="$PROJECT_DIR$/schiebeparkplatz/schiebeparkplatz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ueberladen/ueberladen.iml" filepath="$PROJECT_DIR$/ueberladen/ueberladen.iml" />
+    </modules>
+  </component>
+</project>
