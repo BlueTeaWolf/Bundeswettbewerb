@@ -25,11 +25,11 @@ public class Application {
         }
     }
 
-    public void generate(int... wights) {
+    public void generate(int... weights) {
         Set<Integer> all = new HashSet<>();
-        for (int i = 0; i < wights.length; i++) {
+        for (int i = 0; i < weights.length; i++) {
             Set<Integer> clone = new HashSet<>(all);
-            wights[0] + wights[1] + wights[2]
+            //weights[0] + weights[1] + weights[2]
 
         }
     }
