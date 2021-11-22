@@ -1,36 +1,43 @@
 package de.hochtaunusschule.marktwaage;
 
-import java.util.HashSet;
+import de.hochtaunusschule.testsuite.TestSuite;
+import de.hochtaunusschule.testsuite.test.SimpleTest;
+import de.hochtaunusschule.testsuite.token.TokenStream;
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Queue;
-import java.util.Set;
+import java.util.Scanner;
 
-public class Application {
+public class Application extends SimpleTest<WaageIndex> {
     public static void main(String[] args) {
-
+        TestSuite.launch(Application::new, args);
     }
 
-    private List<Waage> waages;
-
-    private void collect(List<Integer> current, Queue<Integer> left) {
-
+    protected Application(File testFile) {
+        super(testFile);
     }
 
-    private void combinationForSize(List<int[]> combinations,
-                                    int[] array, int[] wigths,
-                                    int start, int end,
-                                    int index, int r) {
-        if (index == r) {
-            combinations.add(array.clone());
+    @Override
+    protected void test(WaageIndex test) {
+        test.generate();
+        //int add = new Scanner(System.in).nextInt();
+        // Waage waage = test.optimal(add);
+        //System.out.println("Beste Kombination: "
+        //    + waage.stringRepresentation(add));
+    }
+
+    @Override
+    protected WaageIndex convert(TokenStream stream) {
+        int size = stream.next().asInt();
+        List<Integer> wights = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            TokenStream line = stream.splitSpace();
+            int wight = line.next().asInt();
+            int occurrences = line.next().asInt();
+            for (int j = 0; j < occurrences; j++) {
+                wights.add(wight);
+            }
         }
-    }
-
-    public void generate(int... weights) {
-        Set<Integer> all = new HashSet<>();
-        for (int i = 0; i < weights.length; i++) {
-            Set<Integer> clone = new HashSet<>(all);
-            //weights[0] + weights[1] + weights[2]
-
-        }
+        return new WaageIndex(wights);
     }
 }

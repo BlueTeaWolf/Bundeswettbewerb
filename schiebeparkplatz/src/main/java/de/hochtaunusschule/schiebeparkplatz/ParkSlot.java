@@ -26,10 +26,12 @@ public class ParkSlot extends AbstractSlot {
     }
 
     public ParkSlot neighbor(Direction direction) {
-        return switch (direction) {
-            case LEFT -> previous;
-            case RIGHT -> next;
-        };
+        switch (direction) {
+            case LEFT: return previous;
+            case RIGHT: return next;
+            default:
+                throw new IllegalStateException();
+        }
     }
 
     public boolean free() {

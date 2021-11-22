@@ -36,4 +36,8 @@ public class Token {
         return Double.parseDouble(asString);
 
     }
+
+    public char asChar() {
+        return asString.charAt(0);
+    }
 }

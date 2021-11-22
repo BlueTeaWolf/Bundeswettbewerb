@@ -1,15 +1,35 @@
 package de.hochtaunusschule.marktwaage;
 
-public class Waage {
-    private final int left;
-    private final int right;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-    public Waage(int left, int right) {
+public class Waage {
+    private final int[] left;
+    private final int leftSum;
+    private final int rightSum;
+
+    public Waage(int[] left, int totalSum) {
         this.left = left;
-        this.right = right;
+        this.leftSum = IntArrays.sum(left);
+        rightSum = totalSum - leftSum;
+    }
+
+    private static String formatSide(Stream<Integer> side) {
+        return side
+            .map(Object::toString)
+            .collect(Collectors.joining(" + "));
+    }
+
+    public String stringRepresentation(int add) {
+        return "";
+        //return formatSide(Arr)
+        //    + " (+ " + add + ") <-> "
+        //    + formatSide(right);
     }
 
     public int balance(int add) {
-        return Math.abs(left + add - right);
+        return Math.abs(leftSum + add - rightSum);
     }
 }
