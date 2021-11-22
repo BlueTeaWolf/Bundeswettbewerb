@@ -7,9 +7,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ueberladen" />
+        <module name="wuerfelglueck" />
         <module name="schiebeparkplatz" />
         <module name="test-suite" />
-        <module name="würfelglück" />
         <module name="marktwaage" />
       </profile>
     </annotationProcessing>
@@ -19,6 +19,7 @@
       <module name="schiebeparkplatz" target="11" />
       <module name="test-suite" target="8" />
       <module name="ueberladen" target="11" />
+      <module name="wuerfelglueck" target="11" />
       <module name="würfelglück" target="11" />
     </bytecodeTargetLevel>
   </component>

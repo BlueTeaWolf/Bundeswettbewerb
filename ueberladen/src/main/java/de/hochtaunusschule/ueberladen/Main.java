@@ -7,7 +7,7 @@ import java.io.File;
 
 public class Main extends SimpleTest<HotelRegistry> {
     public static void main(String[] args) {
-        TestSuite.launch(Main::new);
+        TestSuite.launch(Main::new, args);
     }
 
     protected Main(File testFile) {
