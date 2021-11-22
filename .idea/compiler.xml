@@ -7,15 +7,17 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ueberladen" />
-        <module name="marktwaage" />
         <module name="schiebeparkplatz" />
+        <module name="test-suite" />
+        <module name="marktwaage" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="marktwaage" target="15" />
       <module name="marktwage" target="15" />
       <module name="schiebeparkplatz" target="15" />
-      <module name="ueberladen" target="8" />
+      <module name="test-suite" target="8" />
+      <module name="ueberladen" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

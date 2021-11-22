@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/marktwaage/marktwaage.iml" filepath="$PROJECT_DIR$/marktwaage/marktwaage.iml" />
       <module fileurl="file://$PROJECT_DIR$/schiebeparkplatz/schiebeparkplatz.iml" filepath="$PROJECT_DIR$/schiebeparkplatz/schiebeparkplatz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/test-suite/test-suite.iml" filepath="$PROJECT_DIR$/test-suite/test-suite.iml" />
       <module fileurl="file://$PROJECT_DIR$/ueberladen/ueberladen.iml" filepath="$PROJECT_DIR$/ueberladen/ueberladen.iml" />
     </modules>
   </component>
