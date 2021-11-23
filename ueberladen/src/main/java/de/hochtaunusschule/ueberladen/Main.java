@@ -25,7 +25,7 @@ public class Main extends SimpleTest<HotelRegistry> {
         HotelRegistry registry = new HotelRegistry();
         int size = tokenStream.next().asInt();
         int end = tokenStream.next().asInt();
-        registry.register(new Hotel(10_000, end));
+        registry.setEnd(end);
         for (int i = 0; i < size; i++) {
             TokenStream lineStream = tokenStream.next().splitSpace();
             registry.register(new Hotel(
