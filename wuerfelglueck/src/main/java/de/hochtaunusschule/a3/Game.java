@@ -21,7 +21,7 @@ public class Game {
         }
         players = Arrays.asList(
             new Player(this, one, 39, 0), //blue
-            new Player(this, two, 29, 30) //yellow
+            new Player(this, two, 19 , 20) //yellow
         );
     }
 
