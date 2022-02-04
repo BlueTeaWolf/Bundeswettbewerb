@@ -28,6 +28,10 @@ public class Token {
         return Integer.parseInt(asString);
     }
 
+    public long asLong() {
+        return Long.parseLong(asString);
+    }
+
     public String asString() {
         return asString;
     }

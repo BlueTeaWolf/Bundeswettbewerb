@@ -9,6 +9,7 @@
         <module name="ueberladen" />
         <module name="schiebeparkplatz" />
         <module name="test-suite" />
+        <module name="zzz" />
         <module name="marktwaage" />
       </profile>
     </annotationProcessing>
@@ -18,6 +19,7 @@
       <module name="schiebeparkplatz" target="15" />
       <module name="test-suite" target="8" />
       <module name="ueberladen" target="11" />
+      <module name="zzz" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
