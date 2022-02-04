@@ -10,10 +10,12 @@ public class BlockingCar extends AbstractSlot {
     }
 
     private BlockBinding binding(Direction direction) {
-        return switch (direction) {
-            case LEFT -> space[0];
-            case RIGHT -> space[space.length - 1];
-        };
+        switch (direction) {
+            case LEFT: return space[0];
+            case RIGHT: return space[space.length - 1];
+            default:
+                throw new IllegalStateException();
+        }
     }
 
     private Direction bindTypeBySlot(ParkSlot slot) {

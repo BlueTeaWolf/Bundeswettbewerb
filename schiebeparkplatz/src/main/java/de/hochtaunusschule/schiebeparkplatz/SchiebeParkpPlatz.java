@@ -1,17 +1,16 @@
 package de.hochtaunusschule.schiebeparkplatz;
 
 public class SchiebeParkpPlatz {
-    private static char[] IDENTIFIERS = "abcdefg".toCharArray();
-    private ParkSlot[] state = new ParkSlot[7];
+    private final ParkSlot[] state;
 
-    {
+    public SchiebeParkpPlatz(char start, char end) {
+        state = new ParkSlot[end - start + 1];
         ParkSlot previous = null;
-        for (int i = 0; i < IDENTIFIERS.length; i++) {
-            previous = new ParkSlot(i, IDENTIFIERS[i], previous);
-            state[i] = previous;
+        int i = 0;
+        for (char id = start; id <= end; id++) {
+            previous = new ParkSlot(i, id, previous);
+            state[i++] = previous;
         }
-        new BlockingCar(this, 'h').atIndex(2);
-        new BlockingCar(this, 'i').atIndex(5);
     }
 
     public ParkSlot[] slots() {

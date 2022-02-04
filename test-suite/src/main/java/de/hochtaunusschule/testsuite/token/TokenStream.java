@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -30,18 +31,25 @@ public class TokenStream {
     }
 
     public Iterable<Token> left() {
-        return () -> iterator;
-    }
+        return () -> new Iterator<Token>() {
+            @Override
+            public boolean hasNext() {
+                return iterator.hasNext();
+            }
 
-    private static final Pattern SPACE = Pattern.compile(" ");
+            @Override
+            public Token next() {
+                return TokenStream.this.next();
+            }
+        };
+    }
 
     public TokenStream splitSpace() {
-        return splitNext(SPACE);
+        return splitNext(" ");
     }
 
-    public TokenStream splitNext(Pattern delimiter) {
-        return fromStream(delimiter.splitAsStream(next().asString()).
-            map(Token::new));
+    public TokenStream splitNext(String delimiter) {
+        return fromStream(Arrays.stream(next().asString().split(delimiter)).map(Token::new));
     }
 
     public Token next() {
@@ -54,12 +62,18 @@ public class TokenStream {
         return current;
     }
 
+    private boolean hasCached(int position) {
+        return read > position;
+    }
+
     public Token at(int position) {
-        if (read >= position) {
+        if (hasCached(position)) {
             return tokens.get(position);
         }
-        while (read < position) {
-            next();
+        while (!hasCached(position)) {
+            if (next() == null) {
+                throw new IllegalStateException("Can not read position " + position);
+            }
         }
         return current;
     }

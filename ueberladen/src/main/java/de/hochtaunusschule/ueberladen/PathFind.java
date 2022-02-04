@@ -1,37 +1,37 @@
 package de.hochtaunusschule.ueberladen;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.List;
-
 public class PathFind {
+    private static final int MAX_STEPS = 5;
     private final HotelRegistry registry;
-    private final List<Path> paths = new ArrayList<>();
+    private Path best;
 
     public PathFind(HotelRegistry registry) {
         this.registry = registry;
     }
 
     public Path bestPath() {
-        collectPaths(new ArrayList<>(), new Hotel(1_000, 0));
-        return paths.stream()
-                .max(Comparator.comparingDouble(Path::totalScore))
-                .orElseThrow(() -> new IllegalStateException("No paths found"));
+        best = init();
+        collectPaths(init());
+        return best;
     }
 
-    private void collectPaths(List<Hotel> before, Hotel hotel) {
-        Collection<Hotel> candidates = registry.nextCandidates(hotel);
-        for (Hotel candidate : candidates) {
-            if (!before.contains(candidate)) {
-                List<Hotel> clone = new ArrayList<>(before);
-                if (candidate.isEnd()) {
-                    paths.add(new Path(before));
-                } else {
-                    clone.add(candidate);
-                    if (clone.size() <= 5) {
-                        collectPaths(clone, candidate);
-                    }
+    private Path init() {
+        return new Path(registry.getEnd(), MAX_STEPS, HotelRegistry.MAX_STEP);
+    }
+
+    private void collectPaths(Path route) {
+        int min = route.lastPosition() + route.kuerzesteEtappe();
+        int max = route.lastPosition() + HotelRegistry.MAX_STEP;
+        if (min <= route.length && route.length <= max) {
+            if ( route.totalScore() > best.totalScore()) {
+                best = route.copy();
+            }
+        } else {
+            for (Hotel hotel : registry.nextCandidates(route)) {
+                if (best.isEmpty() || hotel.score() > best.totalScore()) {
+                    route.add(hotel);
+                    collectPaths(route);
+                    route.removeLast();
                 }
             }
         }

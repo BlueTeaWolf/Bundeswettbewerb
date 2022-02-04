@@ -38,6 +38,16 @@ public class Token {
 
     public double asDouble() {
         return Double.parseDouble(asString);
+    }
 
+    @Override
+    public String toString() {
+        return "Token{" +
+            "" + asString +
+            '}';
+    }
+
+    public char asChar() {
+        return asString.charAt(0);
     }
 }
